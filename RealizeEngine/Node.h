@@ -14,7 +14,7 @@ using std::function;
 
 namespace RE_NAMESPACE {
 
-	class Node : Reference {
+	class Node : public Reference {
 		friend class Game;
 		friend class KeyManager;
 	protected:
