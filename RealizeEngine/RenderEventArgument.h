@@ -19,12 +19,12 @@ namespace RE_NAMESPACE {
 		void setY(float y);
 	};
 
-	inline RenderEventArgument::RenderEventArgument() : RenderEventArgument(nullptr) {
-
+	inline RenderEventArgument::RenderEventArgument() {
+		RenderEventArgument(nullptr);
 	}
 
-	inline RenderEventArgument::RenderEventArgument(Node* sender) : RenderEventArgument(sender, Vector()) {
-
+	inline RenderEventArgument::RenderEventArgument(Node* sender) {
+		RenderEventArgument(sender, Vector());
 	}
 
 	inline RenderEventArgument::RenderEventArgument(Node* sender, Vector origin) : EventArgument(sender) {

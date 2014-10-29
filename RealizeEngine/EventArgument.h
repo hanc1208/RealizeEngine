@@ -16,8 +16,8 @@ namespace RE_NAMESPACE {
 		void setSender(const Node* sender);
 	};
 
-	inline EventArgument::EventArgument() : EventArgument(nullptr) {
-
+	inline EventArgument::EventArgument() {
+		EventArgument(nullptr);
 	}
 
 	inline EventArgument::EventArgument(Node* sender) : _sender(sender) {

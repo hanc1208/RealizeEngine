@@ -1,12 +1,16 @@
-﻿빌드 시작: 2014-10-29 오후 7:19:12
+﻿빌드 시작: 2014-10-29 오후 7:46:02
      1>2 노드의 "C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\RealizeEngine.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp OpenGL.cpp TextureManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp Label.cpp Node.cpp OpenGL.cpp Sprite.cpp TextureManager.cpp
          Game.cpp
          코드를 생성하고 있습니다...
-         건너뛰고 있습니다... (관련된 변경 내용 없음)
+         컴파일하고 있습니다...
          TextureManager.cpp
+         Sprite.cpp
          OpenGL.cpp
+         Node.cpp
+         Label.cpp
+         코드를 생성하고 있습니다...
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\RealizeEngine.lib" /NOLOGO Debug\Label.obj
          Debug\OpenGL.obj
@@ -23,4 +27,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:01.46
+경과 시간: 00:00:07.54

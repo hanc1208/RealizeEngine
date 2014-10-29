@@ -17,12 +17,12 @@ namespace RE_NAMESPACE {
 		void setDeltaTime(float deltaTime);
 	};
 
-	inline UpdateEventArgument::UpdateEventArgument() : UpdateEventArgument(nullptr) {
-
+	inline UpdateEventArgument::UpdateEventArgument()  {
+		UpdateEventArgument(nullptr);
 	}
 
-	inline UpdateEventArgument::UpdateEventArgument(Node* sender) : UpdateEventArgument(sender, 0.0f) {
-
+	inline UpdateEventArgument::UpdateEventArgument(Node* sender) {
+		UpdateEventArgument(sender, 0.0f);
 	}
 
 	inline UpdateEventArgument::UpdateEventArgument(Node* sender, float deltaTime) : EventArgument(sender) {
