@@ -158,35 +158,31 @@ namespace RE_NAMESPACE {
 			game->setSize(Size(LOWORD(lParam), HIWORD(lParam)));
 			return 0;
 		case WM_LBUTTONDOWN:
-			game->getScene()->onMouseDown(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), MouseEventButtonType::Left));
-			return 0;
 		case WM_MBUTTONDOWN:
-			game->getScene()->onMouseDown(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), MouseEventButtonType::Middle));
-			return 0;
 		case WM_RBUTTONDOWN:
-			game->getScene()->onMouseDown(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), MouseEventButtonType::Right));
-			return 0;
-		case WM_MOUSEMOVE: {
-			MouseEventButtonType buttonType = MouseEventButtonType::Left;
-			if (wParam | MK_LBUTTON) {
-				buttonType = MouseEventButtonType::Left;
-			} else if (wParam | MK_MBUTTON) {
-				buttonType = MouseEventButtonType::Middle;
-			} else if (wParam | MK_RBUTTON) {
-				buttonType = MouseEventButtonType::Right;
+		case WM_MOUSEMOVE:
+		case WM_LBUTTONUP:
+		case WM_MBUTTONUP:
+		case WM_RBUTTONUP: {
+			MouseEventArgument eventArgument(game->getScene());
+			eventArgument.setX((LOWORD(lParam) - game->getScaledRect().getX()) * (game->getResolution().getWidth() / game->getScaledRect().getWidth()));
+			eventArgument.setY((HIWORD(lParam) - game->getScaledRect().getY()) * (game->getResolution().getHeight() / game->getScaledRect().getHeight()));
+			if (message == WM_LBUTTONDOWN || (message == WM_MOUSEMOVE && wParam | MK_LBUTTON) || message == WM_LBUTTONUP) {
+				eventArgument.setButtonType(MouseEventButtonType::Left);
+			} else if (message == WM_MBUTTONDOWN || (message == WM_MOUSEMOVE && wParam | MK_MBUTTON) || message == WM_MBUTTONUP) {
+				eventArgument.setButtonType(MouseEventButtonType::Middle);
+			} else if (message == WM_RBUTTONDOWN || (message == WM_MOUSEMOVE && wParam | MK_RBUTTON) || message == WM_RBUTTONUP) {
+				eventArgument.setButtonType(MouseEventButtonType::Right);
 			}
-			game->getScene()->onMouseMove(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), buttonType));
+			if (message == WM_LBUTTONDOWN || message == WM_MBUTTONDOWN || message == WM_RBUTTONDOWN) {
+				game->getScene()->onMouseDown(eventArgument);
+			} else if (message == WM_MOUSEMOVE) {
+				game->getScene()->onMouseMove(eventArgument);
+			} else if (message == WM_LBUTTONUP || message == WM_MBUTTONUP || message == WM_RBUTTONUP) {
+				game->getScene()->onMouseUp(eventArgument);
+			}
 			return 0;
 		}
-		case WM_LBUTTONUP:
-			game->getScene()->onMouseUp(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), MouseEventButtonType::Left));
-			return 0;
-		case WM_MBUTTONUP:
-			game->getScene()->onMouseUp(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), MouseEventButtonType::Middle));
-			return 0;
-		case WM_RBUTTONUP:
-			game->getScene()->onMouseUp(MouseEventArgument(game->getScene(), Vector(LOWORD(lParam), HIWORD(wParam)), MouseEventButtonType::Right));
-			return 0;
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			return 0;

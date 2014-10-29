@@ -6,7 +6,8 @@ namespace RE_NAMESPACE {
 	enum MouseEventButtonType {
 		Left,
 		Middle,
-		Right
+		Right,
+		None
 	};
 
 	class MouseEventArgument : public EventArgument {

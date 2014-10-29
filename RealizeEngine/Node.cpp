@@ -45,7 +45,9 @@ namespace RE_NAMESPACE {
 
 	bool Node::onMouseDown(MouseEventArgument eventArgument) {
 		for (auto child = _children.rbegin(); child != _children.rend(); child++) {
-			if ((*child)->onMouseDown(eventArgument)) {
+			MouseEventArgument newEventArgument = eventArgument;
+			newEventArgument.setLocation(eventArgument.getLocation() - this->getPosition());
+			if ((*child)->onMouseDown(newEventArgument)) {
 				return true;
 			}
 		}
@@ -62,7 +64,9 @@ namespace RE_NAMESPACE {
 
 	bool Node::onMouseMove(MouseEventArgument eventArgument) {
 		for (auto child = _children.rbegin(); child != _children.rend(); child++) {
-			if ((*child)->onMouseMove(eventArgument)) {
+			MouseEventArgument newEventArgument = eventArgument;
+			newEventArgument.setLocation(eventArgument.getLocation() - this->getPosition());
+			if ((*child)->onMouseMove(newEventArgument)) {
 				return true;
 			}
 		}
@@ -79,7 +83,9 @@ namespace RE_NAMESPACE {
 
 	bool Node::onMouseUp(MouseEventArgument eventArgument) {
 		for (auto child = _children.rbegin(); child != _children.rend(); child++) {
-			if ((*child)->onMouseUp(eventArgument)) {
+			MouseEventArgument newEventArgument = eventArgument;
+			newEventArgument.setLocation(eventArgument.getLocation() - this->getPosition());
+			if ((*child)->onMouseUp(newEventArgument)) {
 				return true;
 			}
 		}

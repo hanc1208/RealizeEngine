@@ -46,6 +46,7 @@ namespace RE_NAMESPACE {
 		void setResolution(const Size& resolution);
 		Size getSize() const;
 		void setSize(const Size& size);
+		Rect getScaledRect() const;
 		GameScaleMode getGameScaleMode() const;
 		void setGameScaleMode(const GameScaleMode gameScaleMode);
 
@@ -92,6 +93,10 @@ namespace RE_NAMESPACE {
 
 	inline Size Game::getSize() const {
 		return _size;
+	}
+
+	inline Rect Game::getScaledRect() const {
+		return _scaledRect;
 	}
 
 	inline GameScaleMode Game::getGameScaleMode() const {

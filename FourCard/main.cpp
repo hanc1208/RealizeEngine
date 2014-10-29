@@ -10,7 +10,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	Game game(hInstance);
 	game.setGameScaleMode(GameScaleMode::FixedRatio);
 	game.setResolution(Size(1600, 900));
-	game.setSize(Size(1800, 900));
+	game.setSize(Size(960, 540));
 	game.setScene(new SplashScene());
 	game.start();
 }
