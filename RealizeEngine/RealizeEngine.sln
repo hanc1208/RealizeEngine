@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RealizeEngine", "RealizeEngine.vcxproj", "{321B161F-4AF1-47A1-BFAF-6E9647E58E97}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FourCard", "..\FourCard\FourCard.vcxproj", "{586C5993-EFB6-4DC2-873D-0CC8168CC906}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{321B161F-4AF1-47A1-BFAF-6E9647E58E97}.Debug|Win32.ActiveCfg = Debug|Win32
+		{321B161F-4AF1-47A1-BFAF-6E9647E58E97}.Debug|Win32.Build.0 = Debug|Win32
+		{321B161F-4AF1-47A1-BFAF-6E9647E58E97}.Release|Win32.ActiveCfg = Release|Win32
+		{321B161F-4AF1-47A1-BFAF-6E9647E58E97}.Release|Win32.Build.0 = Release|Win32
+		{586C5993-EFB6-4DC2-873D-0CC8168CC906}.Debug|Win32.ActiveCfg = Debug|Win32
+		{586C5993-EFB6-4DC2-873D-0CC8168CC906}.Debug|Win32.Build.0 = Debug|Win32
+		{586C5993-EFB6-4DC2-873D-0CC8168CC906}.Release|Win32.ActiveCfg = Release|Win32
+		{586C5993-EFB6-4DC2-873D-0CC8168CC906}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
