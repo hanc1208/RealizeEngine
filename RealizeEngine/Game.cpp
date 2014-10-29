@@ -183,6 +183,12 @@ namespace RE_NAMESPACE {
 			}
 			return 0;
 		}
+		case WM_KEYDOWN:
+			KeyManager::getInstance()->onKeyDown(KeyEventArgument(game->getScene(), (KeyCode) wParam));
+			return 0;
+		case WM_KEYUP:
+			KeyManager::getInstance()->onKeyUp(KeyEventArgument(game->getScene(), (KeyCode) wParam));
+			return 0;
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			return 0;

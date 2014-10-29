@@ -16,11 +16,8 @@ namespace RE_NAMESPACE {
 			glColor4f(1.0, 1.0, 1.0, 1.0);
 			glRectf(eventArgument.getX(), eventArgument.getY(), eventArgument.getX() + node->getWidth(), eventArgument.getY() + node->getHeight());
 		});
-		node->setOnMouseDownListener([=] (MouseEventArgument eventArgument) {
-			printf("Node  400, 150, 800, 600 Down\n");
-		});
-		node->setOnMouseUpListener([=] (MouseEventArgument eventArgument) {
-			printf("Node  400, 150, 800, 600 Up\n");
+		node->setOnClickListener([=] (MouseEventArgument eventArgument) {
+			printf("Node  400, 150, 800, 600 Click\n");
 		});
 		this->addChild(node);
 		Node* node2 = new Node();
@@ -29,11 +26,8 @@ namespace RE_NAMESPACE {
 			glColor4f(0.8, 0.8, 0.8, 1.0);
 			glRectf(eventArgument.getX(), eventArgument.getY(), eventArgument.getX() + node2->getWidth(), eventArgument.getY() + node2->getHeight());
 		});
-		node2->setOnMouseDownListener([=] (MouseEventArgument eventArgument) {
-			printf("Node2 250, 150, 300, 300 Down\n");
-		});
-		node2->setOnMouseUpListener([=] (MouseEventArgument eventArgument) {
-			printf("Node2 250, 150, 300, 300 Up\n");
+		node2->setOnClickListener([=] (MouseEventArgument eventArgument) {
+			printf("Node2 250, 150, 300, 300 Click\n");
 		});
 		node->addChild(node2);
 		Node* node3 = new Node();
@@ -42,11 +36,8 @@ namespace RE_NAMESPACE {
 			glColor4f(0.6, 0.6, 0.6, 1.0);
 			glRectf(eventArgument.getX(), eventArgument.getY(), eventArgument.getX() + node3->getWidth(), eventArgument.getY() + node3->getHeight());
 		});
-		node3->setOnMouseDownListener([=] (MouseEventArgument eventArgument) {
-			printf("Node3 700, 400, 800, 400 Down\n");
-		});
-		node3->setOnMouseUpListener([=] (MouseEventArgument eventArgument) {
-			printf("Node3 700, 400, 800, 400 Up\n");
+		node3->setOnClickListener([=] (MouseEventArgument eventArgument) {
+			printf("Node3 700, 400, 800, 400 Click\n");
 		});
 		this->addChild(node3);
 		Node* node4 = new Node();
@@ -55,13 +46,21 @@ namespace RE_NAMESPACE {
 			glColor4f(0.4, 0.4, 0.4, 1.0);
 			glRectf(eventArgument.getX(), eventArgument.getY(), eventArgument.getX() + node4->getWidth(), eventArgument.getY() + node4->getHeight());
 		});
-		node4->setOnMouseDownListener([=] (MouseEventArgument eventArgument) {
-			printf("Node4 100, 100, 250, 250 Down\n");
-		});
-		node4->setOnMouseUpListener([=] (MouseEventArgument eventArgument) {
-			printf("Node4 100, 100, 250, 250 Up\n");
+		node4->setOnClickListener([=] (MouseEventArgument eventArgument) {
+			printf("Node4 100, 100, 250, 250 Click\n");
 		});
 		node3->addChild(node4);
 
+		this->setOnKeyDownListener([] (KeyEventArgument eventArgument) {
+			printf("KeyDown %d\n", eventArgument.getKeyCode());
+		});
+
+		this->setOnUpdateListener([] (UpdateEventArgument eventArgument) {
+			vector<KeyCode> result = KeyManager::getInstance()->getPressedKeys();
+
+			for (auto it = result.begin(); it != result.end(); it++) {
+				printf("KeyPressed %d\n", *it);
+			}
+		});
 	}
 }

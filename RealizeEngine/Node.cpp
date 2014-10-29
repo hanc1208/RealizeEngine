@@ -24,8 +24,10 @@ namespace RE_NAMESPACE {
 	}
 
 	void Node::onUpdate(UpdateEventArgument eventArgument) {
-		if (_onUpdateListener)
+		if (_onUpdateListener) {
+			eventArgument.setSender(this);
 			_onUpdateListener(eventArgument);
+		}
 
 		for (auto child = _children.begin(); child != _children.end(); child++) {
 			(*child)->onUpdate(eventArgument);
@@ -35,8 +37,10 @@ namespace RE_NAMESPACE {
 	void Node::onRender(RenderEventArgument eventArgument) const {
 		eventArgument.setOrigin(eventArgument.getOrigin() + this->getPosition());
 
-		if (_onRenderListener)
+		if (_onRenderListener) {
+			eventArgument.setSender(this);
 			_onRenderListener(eventArgument);
+		}
 
 		for (auto child = _children.begin(); child != _children.end(); child++) {
 			(*child)->onRender(eventArgument);
@@ -53,8 +57,12 @@ namespace RE_NAMESPACE {
 		}
 
 		if (eventArgument.getLocation().isInRect(this->getRect())) {
-			if (_onMouseDownListener)
+			if (_onMouseDownListener) {
+				eventArgument.setSender(this);
 				_onMouseDownListener(eventArgument);
+			}
+
+			_mouseDowned = true;
 
 			return true;
 		} else {
@@ -72,9 +80,11 @@ namespace RE_NAMESPACE {
 		}
 
 		if (eventArgument.getLocation().isInRect(this->getRect())) {
-			if (_onMouseMoveListener)
+			if (_onMouseMoveListener) {
+				eventArgument.setSender(this);
 				_onMouseMoveListener(eventArgument);
-
+			}
+			
 			return true;
 		} else {
 			return false;
@@ -91,12 +101,32 @@ namespace RE_NAMESPACE {
 		}
 
 		if (eventArgument.getLocation().isInRect(this->getRect())) {
-			if (_onMouseUpListener)
+			if (_onMouseUpListener) {
+				eventArgument.setSender(this);
 				_onMouseUpListener(eventArgument);
+			}
+
+			if (_mouseDowned && _onClickListener) {
+				_onClickListener(eventArgument);
+				_mouseDowned = false;
+			}
 
 			return true;
 		} else {
+			_mouseDowned = false;
 			return false;
+		}
+
+	}
+
+	void Node::onKeyDown(KeyEventArgument eventArgument) {
+		if (_onKeyDownListener) {
+			eventArgument.setSender(this);
+			_onKeyDownListener(eventArgument);
+		}
+
+		for (auto child = _children.begin(); child != _children.end(); child++) {
+			(*child)->onKeyDown(eventArgument);
 		}
 	}
 

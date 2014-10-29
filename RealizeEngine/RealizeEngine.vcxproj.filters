@@ -75,6 +75,12 @@
     <ClInclude Include="RealizeEngine.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="KeyEventArgument.h">
+      <Filter>EventArgument</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -106,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="Label.cpp">
       <Filter>Reference</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

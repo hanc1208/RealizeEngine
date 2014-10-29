@@ -5,6 +5,7 @@
 #include "UpdateEventArgument.h"
 #include "RenderEventArgument.h"
 #include "MouseEventArgument.h"
+#include "KeyManager.h"
 #include <vector>
 #include <functional>
 
@@ -15,10 +16,13 @@ namespace RE_NAMESPACE {
 
 	class Node : Reference {
 		friend class Game;
+		friend class KeyManager;
 	protected:
 		Rect _rect;
 	private:
 		vector<Node*> _children;
+
+		bool _mouseDowned;
 
 		function<void(UpdateEventArgument eventArgument)> _onUpdateListener;
 		function<void(RenderEventArgument eventArgument)> _onRenderListener;
@@ -26,7 +30,9 @@ namespace RE_NAMESPACE {
 		function<void(MouseEventArgument eventArgument)> _onMouseMoveListener;
 		function<void(MouseEventArgument eventArgument)> _onMouseUpListener;
 		function<void(MouseEventArgument eventArgument)> _onClickListener;
+		function<void(KeyEventArgument eventArgument)> _onKeyDownListener;
 	public:
+		Node();
 		virtual ~Node();
 
 		Rect getRect() const;
@@ -58,13 +64,19 @@ namespace RE_NAMESPACE {
 		void setOnMouseMoveListener(const function<void(MouseEventArgument eventArgument)> onMouseMoveListener);
 		void setOnMouseUpListener(const function<void(MouseEventArgument eventArgument)> onMouseUpListener);
 		void setOnClickListener(const function<void(MouseEventArgument eventArgument)> onClickListener);
+		void setOnKeyDownListener(const function<void(KeyEventArgument eventArgument)> onKeyListener);
 	protected:
 		virtual void onUpdate(UpdateEventArgument eventArgument);
 		virtual void onRender(RenderEventArgument eventArgument) const;
 		bool onMouseDown(MouseEventArgument eventArgument);
 		bool onMouseMove(MouseEventArgument eventArgument);
 		bool onMouseUp(MouseEventArgument eventArgument);
+		void onKeyDown(KeyEventArgument eventArgument);
 	};
+
+	inline Node::Node() : _mouseDowned(false) {
+
+	}
 
 	inline Node::~Node() {
 		this->removeAllChild();
@@ -172,6 +184,10 @@ namespace RE_NAMESPACE {
 
 	inline void Node::setOnClickListener(const function<void(MouseEventArgument eventArgument)> onClickListener) {
 		_onClickListener = onClickListener;
+	}
+
+	inline void Node::setOnKeyDownListener(const function<void(KeyEventArgument eventArgument)> onKeyDownListener) {
+		_onKeyDownListener = onKeyDownListener;
 	}
 
 }

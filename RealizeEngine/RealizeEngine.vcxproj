@@ -66,6 +66,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EventArgument.h" />
+    <ClInclude Include="KeyEventArgument.h" />
+    <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="MouseEventArgument.h" />
     <ClInclude Include="OpenGL.h" />
@@ -84,6 +86,7 @@
     <ClInclude Include="UpdateEventArgument.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Texture.cpp" />

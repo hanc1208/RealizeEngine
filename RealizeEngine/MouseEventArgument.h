@@ -42,9 +42,8 @@ namespace RE_NAMESPACE {
 		MouseEventArgument(sender, location, MouseEventButtonType::Left);
 	}
 
-	inline MouseEventArgument::MouseEventArgument(Node* sender, Vector location, MouseEventButtonType buttonType) : EventArgument(sender) {
-		_location = location;
-		_buttonType = buttonType;
+	inline MouseEventArgument::MouseEventArgument(Node* sender, Vector location, MouseEventButtonType buttonType) : EventArgument(sender), _location(location), _buttonType(buttonType) {
+	
 	}
 
 	inline Vector MouseEventArgument::getLocation() const {

@@ -27,8 +27,8 @@ namespace RE_NAMESPACE {
 		RenderEventArgument(sender, Vector());
 	}
 
-	inline RenderEventArgument::RenderEventArgument(Node* sender, Vector origin) : EventArgument(sender) {
-		_origin = origin;
+	inline RenderEventArgument::RenderEventArgument(Node* sender, Vector origin) : EventArgument(sender), _origin(origin) {
+
 	}
 
 	inline Vector RenderEventArgument::getOrigin() const {

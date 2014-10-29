@@ -25,8 +25,8 @@ namespace RE_NAMESPACE {
 		UpdateEventArgument(sender, 0.0f);
 	}
 
-	inline UpdateEventArgument::UpdateEventArgument(Node* sender, float deltaTime) : EventArgument(sender) {
-		_deltaTime = deltaTime;
+	inline UpdateEventArgument::UpdateEventArgument(Node* sender, float deltaTime) : EventArgument(sender), _deltaTime(deltaTime) {
+
 	}
 
 	inline float UpdateEventArgument::getDeltaTime() {
