@@ -20,7 +20,6 @@ namespace RE_NAMESPACE {
 				it = _children.erase(it);
 			}
 		}
-		assert(it != _children.end());
 	}
 
 	void Node::onUpdate(UpdateEventArgument eventArgument) {
