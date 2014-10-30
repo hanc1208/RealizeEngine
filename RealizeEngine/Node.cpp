@@ -14,17 +14,19 @@ namespace RE_NAMESPACE {
 
 	void Node::removeChild(const Node* child) {
 		auto it = _children.begin();
-		for (; it != _children.end(); it++) {
+		for (; it != _children.end();) {
 			if (*it == child) {
 				(*it)->release();
 				it = _children.erase(it);
+			} else {
+				it++;
 			}
 		}
 	}
 
 	void Node::onUpdate(UpdateEventArgument eventArgument) {
 		if (_onUpdateListener) {
-			eventArgument.setSender(this);
+			eventArgument.sender = this;
 			_onUpdateListener(eventArgument);
 		}
 
@@ -33,31 +35,31 @@ namespace RE_NAMESPACE {
 		}
 	}
 
-	void Node::onRender(RenderEventArgument eventArgument) const {
-		eventArgument.setOrigin(eventArgument.getOrigin() + this->getPosition());
-
+	void Node::onRender(RenderEventArgument eventArgument) {
 		if (_onRenderListener) {
-			eventArgument.setSender(this);
+			eventArgument.sender = this;
 			_onRenderListener(eventArgument);
 		}
 
 		for (auto child = _children.begin(); child != _children.end(); child++) {
-			(*child)->onRender(eventArgument);
+			RenderEventArgument newEventArgument = eventArgument;
+			newEventArgument.origin += (*child)->getPosition();
+			(*child)->onRender(newEventArgument);
 		}
 	}
 
 	bool Node::onMouseDown(MouseEventArgument eventArgument) {
 		for (auto child = _children.rbegin(); child != _children.rend(); child++) {
 			MouseEventArgument newEventArgument = eventArgument;
-			newEventArgument.setLocation(eventArgument.getLocation() - this->getPosition());
+			newEventArgument.location -= this->getPosition();
 			if ((*child)->onMouseDown(newEventArgument)) {
 				return true;
 			}
 		}
 
-		if (eventArgument.getLocation().isInRect(this->getRect())) {
+		if (eventArgument.location.isInRect(this->getRect())) {
 			if (_onMouseDownListener) {
-				eventArgument.setSender(this);
+				eventArgument.sender = this;
 				_onMouseDownListener(eventArgument);
 			}
 
@@ -72,15 +74,15 @@ namespace RE_NAMESPACE {
 	bool Node::onMouseMove(MouseEventArgument eventArgument) {
 		for (auto child = _children.rbegin(); child != _children.rend(); child++) {
 			MouseEventArgument newEventArgument = eventArgument;
-			newEventArgument.setLocation(eventArgument.getLocation() - this->getPosition());
+			newEventArgument.location -= this->getPosition();
 			if ((*child)->onMouseMove(newEventArgument)) {
 				return true;
 			}
 		}
 
-		if (eventArgument.getLocation().isInRect(this->getRect())) {
+		if (eventArgument.location.isInRect(this->getRect())) {
 			if (_onMouseMoveListener) {
-				eventArgument.setSender(this);
+				eventArgument.sender = this;
 				_onMouseMoveListener(eventArgument);
 			}
 			
@@ -93,15 +95,15 @@ namespace RE_NAMESPACE {
 	bool Node::onMouseUp(MouseEventArgument eventArgument) {
 		for (auto child = _children.rbegin(); child != _children.rend(); child++) {
 			MouseEventArgument newEventArgument = eventArgument;
-			newEventArgument.setLocation(eventArgument.getLocation() - this->getPosition());
+			newEventArgument.location -= this->getPosition();
 			if ((*child)->onMouseUp(newEventArgument)) {
 				return true;
 			}
 		}
 
-		if (eventArgument.getLocation().isInRect(this->getRect())) {
+		if (eventArgument.location.isInRect(this->getRect())) {
 			if (_onMouseUpListener) {
-				eventArgument.setSender(this);
+				eventArgument.sender = this;
 				_onMouseUpListener(eventArgument);
 			}
 
@@ -120,7 +122,7 @@ namespace RE_NAMESPACE {
 
 	void Node::onKeyDown(KeyEventArgument eventArgument) {
 		if (_onKeyDownListener) {
-			eventArgument.setSender(this);
+			eventArgument.sender = this;
 			_onKeyDownListener(eventArgument);
 		}
 

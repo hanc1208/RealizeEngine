@@ -2,7 +2,7 @@
 
 namespace RE_NAMESPACE {
 
-	void Label::onRender(RenderEventArgument eventArgument) const {
+	void Label::onRender(RenderEventArgument eventArgument) {
 	}
 
 }

@@ -31,11 +31,11 @@ namespace RE_NAMESPACE {
 	}
 
 	inline float Texture::getWidth() const {
-		return this->getSize().getWidth();
+		return _size.width;
 	}
 
 	inline float Texture::getHeight() const {
-		return this->getSize().getHeight();
+		return _size.height;
 	}
 
 	inline Size Texture::getGLSize() const {

@@ -22,27 +22,27 @@ namespace RE_NAMESPACE {
 		_size = Size((float) image->GetWidth(), (float) image->GetHeight());
 
 		for (float width = 1.0f;; width *= 2.0f) {
-			if (width >= _size.getWidth()) {
-				_glSize.setWidth(width);
+			if (width >= _size.width) {
+				_glSize.width = width;
 				break;
 			}
 		}
 
 		for (float height = 1.0f;; height *= 2.0f) {
-			if (height >= _size.getHeight()) {
-				_glSize.setHeight(height);
+			if (height >= _size.height) {
+				_glSize.height = height;
 				break;
 			}
 		}
 
-		DWORD* glImage = (DWORD*) malloc(sizeof(DWORD) * (int) _glSize.getWidth() * (int) _glSize.getHeight());
+		DWORD* glImage = (DWORD*) malloc(sizeof(DWORD) * (int) _glSize.width * (int) _glSize.height);
 
-		for (int y = 0; y < (int) _glSize.getHeight(); y++) {
-			if (y < _size.getHeight()) {
-				memcpy(&glImage[(int) (y * _glSize.getWidth())], &bitmapDataScan0[(int) (y * _size.getWidth())], sizeof(DWORD) * (int) _size.getWidth());
-				memset(&glImage[(int) (y * _glSize.getWidth() + _size.getWidth())], 0, sizeof(DWORD) * (int) (_glSize.getWidth() - _size.getWidth()));
+		for (int y = 0; y < (int) _glSize.height; y++) {
+			if (y < _size.height) {
+				memcpy(&glImage[(int) (y * _glSize.width)], &bitmapDataScan0[(int) (y * _size.width)], sizeof(DWORD) * (int) _size.width);
+				memset(&glImage[(int) (y * _glSize.width + _size.width)], 0, sizeof(DWORD) * (int) (_glSize.width - _size.width));
 			} else {
-				memset(&glImage[(int) (y * _glSize.getWidth())], 0, sizeof(DWORD) * (int) _glSize.getWidth());
+				memset(&glImage[(int) (y * _glSize.width)], 0, sizeof(DWORD) * (int) _glSize.width);
 			}
 		}
 
@@ -56,7 +56,7 @@ namespace RE_NAMESPACE {
 		glBindTexture(GL_TEXTURE_2D, _textureID);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, (GLsizei) _glSize.getWidth(), (GLsizei) _glSize.getHeight(), 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, glImage);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, (GLsizei) _glSize.width, (GLsizei) _glSize.height, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, glImage);
 
 		glPopAttrib();
 
@@ -69,8 +69,8 @@ namespace RE_NAMESPACE {
 	}
 
 	void Texture::drawTexture(const Rect& rect) const {
-		float x = rect.getX(), y = rect.getY();
-		float width = _glSize.getWidth() * rect.getWidth() / _size.getWidth(), height = _glSize.getHeight() * rect.getHeight() / _size.getHeight();
+		float x = rect.origin.x, y = rect.origin.y;
+		float width = _glSize.width * rect.size.width / _size.width, height = _glSize.height * rect.size.height / _size.height;
 
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
 

@@ -12,6 +12,7 @@ namespace RE_NAMESPACE {
 	Game::Game(HINSTANCE instanceHandle) {
 		_instance = this;
 		_instanceHandle = instanceHandle;
+		_consoleHandle = NULL;
 
 		this->setFramePerSecond(60);
 		this->setResolution(Size(RE_DEFAULT_WIDTH, RE_DEFAULT_HEIGHT));
@@ -27,14 +28,16 @@ namespace RE_NAMESPACE {
 
 	Game::~Game() {
 		OpenGL::destroy();
-		FreeConsole();
+		if (_consoleHandle) {
+			this->destroyConsole();
+		}
 		this->setScene(nullptr);
 	}
 
 	void Game::setSize(const Size& size) {
 		_size = size;
 
-		RECT rect = {0, 0, (LONG) size.getWidth(), (LONG) size.getHeight()};
+		RECT rect = {0, 0, (LONG) size.width, (LONG) size.height};
 		AdjustWindowRect(&rect, GetWindowLong(_windowHandle, GWL_STYLE), FALSE);
 		SetWindowPos(_windowHandle, NULL, 0, 0, (int) rect.right - rect.left, (int) rect.bottom - rect.top, SWP_NOZORDER | SWP_NOMOVE);
 
@@ -44,22 +47,22 @@ namespace RE_NAMESPACE {
 		case GameScaleMode::NoScale:
 			break;
 		case GameScaleMode::FixedRatio: {
-			float resolution_ratio = _resolution.getWidth() / _resolution.getHeight();
-			float size_ratio = _size.getWidth() / _size.getHeight();
+			float resolution_ratio = _resolution.width / _resolution.height;
+			float size_ratio = _size.width / _size.height;
 
 			if (size_ratio > resolution_ratio) {
-				_scaledRect.setWidth(_resolution.getWidth() * (_size.getHeight() / _resolution.getHeight()));
-				_scaledRect.setHeight(_size.getHeight());
-				_scaledRect.setX((_size.getWidth() - _scaledRect.getWidth()) / 2);
+				_scaledRect.size.width = _resolution.width * (_size.height / _resolution.height);
+				_scaledRect.size.height = _size.height;
+				_scaledRect.origin.x = (_size.width - _scaledRect.size.width) / 2;
 			} else {
-				_scaledRect.setWidth(_size.getWidth());
-				_scaledRect.setHeight(_resolution.getHeight() * (_size.getWidth() / _resolution.getWidth()));
-				_scaledRect.setY((_size.getHeight() - _scaledRect.getHeight()) / 2);
+				_scaledRect.size.width = _size.width;
+				_scaledRect.size.height = _resolution.height * (_size.width / _resolution.width);
+				_scaledRect.origin.y = (_size.height - _scaledRect.size.height) / 2;
 			}
 			break;
 		}
 		case GameScaleMode::Stretch:
-			_scaledRect.setSize(_size);
+			_scaledRect.size = _size;
 			break;
 		}
 
@@ -81,10 +84,6 @@ namespace RE_NAMESPACE {
 		assert(_scene);
 		assert(_windowHandle);
 		ShowWindow(_windowHandle, SW_SHOW);
-
-		AllocConsole();
-		FILE* conout;
-		freopen_s(&conout, "CONOUT$", "a", stdout);
 
 		QueryPerformanceFrequency(&_queryPerformanceFrequency);
 		QueryPerformanceCounter(&_queryPerformanceLast);
@@ -130,7 +129,7 @@ namespace RE_NAMESPACE {
 	}
 
 	void Game::destroy() {
-		SendMessage(_windowHandle, WM_QUIT, 0, 0);
+		PostMessage(_windowHandle, WM_QUIT, 0, 0);
 	}
 
 	void Game::registerWindowClass() const {
@@ -165,14 +164,14 @@ namespace RE_NAMESPACE {
 		case WM_MBUTTONUP:
 		case WM_RBUTTONUP: {
 			MouseEventArgument eventArgument(game->getScene());
-			eventArgument.setX((LOWORD(lParam) - game->getScaledRect().getX()) * (game->getResolution().getWidth() / game->getScaledRect().getWidth()));
-			eventArgument.setY((HIWORD(lParam) - game->getScaledRect().getY()) * (game->getResolution().getHeight() / game->getScaledRect().getHeight()));
+			eventArgument.location.x = (LOWORD(lParam) - game->getScaledRect().origin.x) * (game->getResolution().width / game->getScaledRect().size.width);
+			eventArgument.location.y = (HIWORD(lParam) - game->getScaledRect().origin.y) * (game->getResolution().height / game->getScaledRect().size.height);
 			if (message == WM_LBUTTONDOWN || (message == WM_MOUSEMOVE && wParam | MK_LBUTTON) || message == WM_LBUTTONUP) {
-				eventArgument.setButtonType(MouseEventButtonType::Left);
+				eventArgument.buttonType = MouseEventButtonType::Left;
 			} else if (message == WM_MBUTTONDOWN || (message == WM_MOUSEMOVE && wParam | MK_MBUTTON) || message == WM_MBUTTONUP) {
-				eventArgument.setButtonType(MouseEventButtonType::Middle);
+				eventArgument.buttonType = MouseEventButtonType::Middle;
 			} else if (message == WM_RBUTTONDOWN || (message == WM_MOUSEMOVE && wParam | MK_RBUTTON) || message == WM_RBUTTONUP) {
-				eventArgument.setButtonType(MouseEventButtonType::Right);
+				eventArgument.buttonType = MouseEventButtonType::Right;
 			}
 			if (message == WM_LBUTTONDOWN || message == WM_MBUTTONDOWN || message == WM_RBUTTONDOWN) {
 				game->getScene()->onMouseDown(eventArgument);

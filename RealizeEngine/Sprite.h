@@ -14,7 +14,7 @@ namespace RE_NAMESPACE {
 		const Texture* getTexture() const;
 		void setImage(const Texture* texture);
 
-		void onRender(RenderEventArgument eventArgument) const override;
+		void onRender(RenderEventArgument eventArgument) override;
 	};
 
 	inline Sprite::Sprite() {

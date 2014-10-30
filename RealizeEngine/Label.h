@@ -9,7 +9,7 @@ namespace RE_NAMESPACE {
 	public:
 		Label();
 
-		void onRender(RenderEventArgument eventArgument) const override;
+		void onRender(RenderEventArgument eventArgument) override;
 	};
 
 }

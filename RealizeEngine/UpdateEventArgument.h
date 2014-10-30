@@ -5,16 +5,12 @@ namespace RE_NAMESPACE {
 
 	class Node;
 
-	class UpdateEventArgument : public EventArgument {
-	private:
-		float _deltaTime;
-	public:
+	struct UpdateEventArgument : public EventArgument {
+		float deltaTime;
+
 		UpdateEventArgument();
 		UpdateEventArgument(Node* sender);
 		UpdateEventArgument(Node* sender, float deltaTime);
-
-		float getDeltaTime();
-		void setDeltaTime(float deltaTime);
 	};
 
 	inline UpdateEventArgument::UpdateEventArgument()  {
@@ -25,16 +21,8 @@ namespace RE_NAMESPACE {
 		UpdateEventArgument(sender, 0.0f);
 	}
 
-	inline UpdateEventArgument::UpdateEventArgument(Node* sender, float deltaTime) : EventArgument(sender), _deltaTime(deltaTime) {
+	inline UpdateEventArgument::UpdateEventArgument(Node* sender, float deltaTime) : EventArgument(sender), deltaTime(deltaTime) {
 
-	}
-
-	inline float UpdateEventArgument::getDeltaTime() {
-		return _deltaTime;
-	}
-
-	inline void UpdateEventArgument::setDeltaTime(float deltaTime) {
-		_deltaTime = deltaTime;
 	}
 
 }

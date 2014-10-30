@@ -7,16 +7,12 @@ namespace RE_NAMESPACE {
 		Null
 	};
 
-	class KeyEventArgument : public EventArgument {
-	private:
-		KeyCode _keyCode;
-	public:
+	struct KeyEventArgument : public EventArgument {
+		KeyCode keyCode;
+
 		KeyEventArgument();
 		KeyEventArgument(Node* sender);
 		KeyEventArgument(Node* sender, KeyCode keyCode);
-
-		KeyCode getKeyCode() const;
-		void setKeyCode(KeyCode keyCode);
 	};
 
 	inline KeyEventArgument::KeyEventArgument() {
@@ -27,16 +23,7 @@ namespace RE_NAMESPACE {
 		KeyEventArgument(sender, KeyCode::Null);
 	}
 
-	inline KeyEventArgument::KeyEventArgument(Node* sender, KeyCode keyCode) : EventArgument(sender), _keyCode(keyCode) {
+	inline KeyEventArgument::KeyEventArgument(Node* sender, KeyCode keyCode) : EventArgument(sender), keyCode(keyCode) {
 	}
-
-	inline KeyCode KeyEventArgument::getKeyCode() const {
-		return _keyCode;
-	}
-
-	inline void KeyEventArgument::setKeyCode(KeyCode keyCode) {
-		_keyCode = keyCode;
-	}
-
 
 }

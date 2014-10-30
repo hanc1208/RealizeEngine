@@ -57,15 +57,15 @@ namespace RE_NAMESPACE {
 	}
 
 	void OpenGL::onSize(Size resolution, Rect rect) {
-		if (rect.getHeight() == 0) {
-			rect.setHeight(1);
+		if (rect.size.height == 0) {
+			rect.size.height = 1;
 		}
 
-		glViewport((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
+		glViewport((int) rect.origin.x, (int) rect.origin.y, (int) rect.size.width, (int) rect.size.height);
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluOrtho2D(0, resolution.getWidth(), resolution.getHeight(), 0);
+		gluOrtho2D(0, resolution.width, resolution.height, 0);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 	}

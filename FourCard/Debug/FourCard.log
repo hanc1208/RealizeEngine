@@ -1,4 +1,4 @@
-﻿빌드 시작: 2014-10-29 오후 9:35:19
+﻿빌드 시작: 2014-10-30 오전 9:19:56
      1>2 노드의 "C:\Users\hanc1208\Desktop\RealizeEngine\FourCard\FourCard.vcxproj" 프로젝트(Build 대상)입니다.
      1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\FourCard.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\FourCard.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\FourCard.lib" /MACHINE:X86 Debug\main.obj
@@ -9,4 +9,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:00.51
+경과 시간: 00:00:00.56

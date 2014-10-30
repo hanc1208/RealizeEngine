@@ -17,6 +17,7 @@ namespace RE_NAMESPACE {
 		static Game* _instance;
 		HWND _windowHandle;
 		HINSTANCE _instanceHandle;
+		FILE* _consoleHandle;
 
 		int _framePerSecond;
 		LARGE_INTEGER _queryPerformanceFrequency, _queryPerformanceLast;
@@ -38,6 +39,9 @@ namespace RE_NAMESPACE {
 
 		HWND getWindowHandle() const;
 		HINSTANCE getInstanceHandle() const;
+
+		void createConsole();
+		void destroyConsole();
 
 		int getFramePerSecond() const;
 		void setFramePerSecond(int framePerSecond);
@@ -72,6 +76,15 @@ namespace RE_NAMESPACE {
 
 	inline HINSTANCE Game::getInstanceHandle() const {
 		return _instanceHandle;
+	}
+
+	inline void Game::createConsole() {
+		AllocConsole();
+		freopen_s(&_consoleHandle, "CONOUT$", "a", stdout);
+	}
+
+	inline void Game::destroyConsole() {
+		FreeConsole();
 	}
 
 	inline int Game::getFramePerSecond() const {

@@ -67,7 +67,7 @@ namespace RE_NAMESPACE {
 		void setOnKeyDownListener(const function<void(KeyEventArgument eventArgument)> onKeyListener);
 	protected:
 		virtual void onUpdate(UpdateEventArgument eventArgument);
-		virtual void onRender(RenderEventArgument eventArgument) const;
+		virtual void onRender(RenderEventArgument eventArgument);
 		bool onMouseDown(MouseEventArgument eventArgument);
 		bool onMouseMove(MouseEventArgument eventArgument);
 		bool onMouseUp(MouseEventArgument eventArgument);
@@ -91,51 +91,51 @@ namespace RE_NAMESPACE {
 	}
 
 	inline Vector Node::getPosition() const {
-		return _rect.getOrigin();
+		return _rect.origin;
 	}
 
 	inline void Node::setPosition(Vector position) {
-		_rect.setOrigin(position);
+		_rect.origin = position;
 	}
 
 	inline Size Node::getSize() const {
-		return _rect.getSize();
+		return _rect.size;
 	}
 
 	inline void Node::setSize(Size size) {
-		_rect.setSize(size);
+		_rect.size = size;
 	}
 
 	inline float Node::getX() const {
-		return _rect.getX();
+		return _rect.origin.x;
 	}
 
 	inline void Node::setX(const float x) {
-		_rect.setX(x);
+		_rect.origin.x = x;
 	}
 
 	inline float Node::getY() const {
-		return _rect.getY();
+		return _rect.origin.y;
 	}
 
 	inline void Node::setY(const float y) {
-		_rect.setY(y);
+		_rect.origin.y = y;
 	}
 
 	inline float Node::getWidth() const {
-		return _rect.getWidth();
+		return _rect.size.width;
 	}
 
 	inline void Node::setWidth(const float width) {
-		_rect.setWidth(width);
+		_rect.size.width = width;
 	}
 	
 	inline float Node::getHeight() const {
-		return _rect.getHeight();
+		return _rect.size.height;
 	}
 
 	inline void Node::setHeight(const float height) {
-		_rect.setHeight(height);
+		_rect.size.height = height;
 	}
 
 	inline const vector<Node*>& Node::getChildren() const {

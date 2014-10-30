@@ -6,15 +6,15 @@ namespace RE_NAMESPACE {
 	KeyManager KeyManager::_instance;
 
 	void KeyManager::onKeyDown(KeyEventArgument eventArgument) {
-		if (_keyDowned.find(eventArgument.getKeyCode()) == _keyDowned.end() || _keyDowned[eventArgument.getKeyCode()] == false) {
+		if (_keyDowned.find(eventArgument.keyCode) == _keyDowned.end() || _keyDowned[eventArgument.keyCode] == false) {
 			Game::getInstance()->getScene()->onKeyDown(eventArgument);
 		}
 
-		_keyDowned[eventArgument.getKeyCode()] = true;
+		_keyDowned[eventArgument.keyCode] = true;
 	}
 
 	void KeyManager::onKeyUp(KeyEventArgument eventArgument) {
-		_keyDowned[eventArgument.getKeyCode()] = false;
+		_keyDowned[eventArgument.keyCode] = false;
 	}
 
 	bool KeyManager::isKeyPressed(KeyCode keyCode) const {
