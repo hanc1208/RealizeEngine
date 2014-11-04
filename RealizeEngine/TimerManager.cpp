@@ -11,10 +11,10 @@ namespace RE_NAMESPACE {
 	}
 
 	void TimerManager::start(const Timer* timer) {
+		const_cast<Timer*>(timer)->_currentTime = 0.0f;
+		const_cast<Timer*>(timer)->_currentLoop = 0;
 		for (auto it = _timers.begin(); it != _timers.end(); it++) {
 			if (*it == timer) {
-				(*it)->_currentTime = 0.0f;
-				(*it)->_currentLoop = 0;
 				return;
 			}
 		}

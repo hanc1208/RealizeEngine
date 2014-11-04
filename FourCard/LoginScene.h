@@ -1,10 +1,9 @@
 #pragma once
 #include "RealizeEngine.h"
-#include "LoginScene.h"
 
 using namespace RE_NAMESPACE;
 
-class SplashScene : public Node {
+class LoginScene : public Node {
 public:
-	SplashScene();
+	LoginScene();
 };

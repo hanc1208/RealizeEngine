@@ -79,10 +79,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LoginScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SplashScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LoginScene.h" />
     <ClInclude Include="SplashScene.h" />
   </ItemGroup>
   <ItemGroup>

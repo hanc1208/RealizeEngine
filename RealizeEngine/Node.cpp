@@ -3,8 +3,21 @@
 
 namespace RE_NAMESPACE {
 
-	Node::Node() : _mouseDowned(false) {
+	Node::Node() : _parent(nullptr), _mouseDowned(false) {
 		this->setSize(Game::getInstance()->getResolution());
+	}
+
+	void Node::addChild(const Node* child) {
+		const_cast<Node*>(child)->_parent = this;
+		const_cast<Node*>(child)->retain();
+		_children.push_back(const_cast<Node*>(child));
+	}
+
+	void Node::removeAllChild() {
+		int count = _children.size();
+		for (int i = 0; i < count; i++) {
+			this->removeChild(0);
+		}
 	}
 
 	void Node::removeChild(const int index) {
@@ -13,6 +26,7 @@ namespace RE_NAMESPACE {
 		for (int i = 0; i < index; i++) {
 			it++;
 		}
+		(*it)->_parent = nullptr;
 		(*it)->release();
 		_children.erase(it);
 	}
@@ -21,6 +35,7 @@ namespace RE_NAMESPACE {
 		auto it = _children.begin();
 		for (; it != _children.end();) {
 			if (*it == child) {
+				(*it)->_parent = nullptr;
 				(*it)->release();
 				it = _children.erase(it);
 			} else {
@@ -49,6 +64,8 @@ namespace RE_NAMESPACE {
 		for (auto child = _children.begin(); child != _children.end(); child++) {
 			RenderEventArgument newEventArgument = eventArgument;
 			newEventArgument.origin += (*child)->getPosition();
+			newEventArgument.origin.x -= (*child)->getWidth() * (*child)->getAnchor().x;
+			newEventArgument.origin.y -= (*child)->getHeight() * (*child)->getAnchor().y;
 			(*child)->onRender(newEventArgument);
 		}
 	}

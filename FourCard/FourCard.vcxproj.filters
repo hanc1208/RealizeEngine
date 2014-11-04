@@ -13,18 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{6738c17b-b7a1-41c5-b4fb-208f42e9058d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="LoginScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
     <ClCompile Include="SplashScene.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LoginScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
     <ClInclude Include="SplashScene.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

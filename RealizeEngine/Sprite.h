@@ -12,6 +12,7 @@ namespace RE_NAMESPACE {
 		Sprite(const Texture* texture);
 		
 		const Texture* getTexture() const;
+		void setImage(const string& name);
 		void setImage(const Texture* texture);
 
 		void onRender(RenderEventArgument eventArgument) override;
@@ -31,6 +32,10 @@ namespace RE_NAMESPACE {
 
 	inline const Texture* Sprite::getTexture() const {
 		return _texture;
+	}
+
+	inline void Sprite::setImage(const string& name) {
+		this->setImage(TextureManager::getInstance()->getImage(name));
 	}
 
 	inline void Sprite::setImage(const Texture* texture) {

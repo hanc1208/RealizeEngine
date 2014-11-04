@@ -19,10 +19,9 @@ namespace RE_NAMESPACE {
 	class Node : public Reference {
 		friend class Game;
 		friend class KeyManager;
-	protected:
-		Rect _rect;
 	private:
 		vector<Node*> _children;
+		Node* _parent;
 
 		bool _mouseDowned;
 
@@ -33,6 +32,9 @@ namespace RE_NAMESPACE {
 		function<void(MouseEventArgument eventArgument)> _onMouseUpListener;
 		function<void(MouseEventArgument eventArgument)> _onClickListener;
 		function<void(KeyEventArgument eventArgument)> _onKeyDownListener;
+	protected:
+		Rect _rect;
+		Vector _anchor;
 	public:
 		Node();
 		virtual ~Node();
@@ -51,6 +53,8 @@ namespace RE_NAMESPACE {
 		void setWidth(const float width);
 		float getHeight() const;
 		void setHeight(const float height);
+		Vector getAnchor() const;
+		void setAnchor(const Vector anchor);
 
 		const vector<Node*>& getChildren() const;
 		int getChildrenCount() const;
@@ -136,6 +140,14 @@ namespace RE_NAMESPACE {
 		_rect.size.height = height;
 	}
 
+	inline Vector Node::getAnchor() const {
+		return _anchor;
+	}
+
+	inline void Node::setAnchor(const Vector anchor) {
+		_anchor = anchor;
+	}
+
 	inline const vector<Node*>& Node::getChildren() const {
 		return _children;
 	}
@@ -146,18 +158,6 @@ namespace RE_NAMESPACE {
 
 	inline const Node* Node::getChild(const int index) const {
 		return _children[index];
-	}
-
-	inline void Node::addChild(const Node* child) {
-		const_cast<Node*>(child)->retain();
-		_children.push_back(const_cast<Node*>(child));
-	}
-
-	inline void Node::removeAllChild() {
-		int count = _children.size();
-		for (int i = 0; i < count; i++) {
-			this->removeChild(0);
-		}
 	}
 
 	inline void Node::setOnUpdateListener(const function<void(UpdateEventArgument eventArgument)> onUpdateListener) {
