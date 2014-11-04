@@ -1,12 +1,11 @@
-﻿빌드 시작: 2014-10-30 오전 9:19:55
+﻿빌드 시작: 2014-11-04 오후 11:29:56
      1>2 노드의 "C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\RealizeEngine.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
-         Game.cpp
-     1>c:\users\hanc1208\desktop\realizeengine\realizeengine\type.h(32): warning C4099: 'RealizeEngine::Rect' : 처음에는 'class'을(를) 사용하여 형식 이름을 표시했는데 이제는 'struct'을(를) 사용하여 표시합니다.
-                 c:\users\hanc1208\desktop\realizeengine\realizeengine\type.h(7) : 'RealizeEngine::Rect' 선언을 참조하십시오.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Label.cpp
+         Label.cpp
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\RealizeEngine.lib" /NOLOGO Debug\KeyManager.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\RealizeEngine.lib" /NOLOGO Debug\FontManager.obj
+         Debug\KeyManager.obj
          Debug\Label.obj
          Debug\OpenGL.obj
          Debug\Texture.obj
@@ -16,10 +15,11 @@
          Debug\Reference.obj
          Debug\Sprite.obj
          Debug\StringManager.obj
+         Debug\TimerManager.obj
          Debug\Type.obj
          RealizeEngine.vcxproj -> C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\RealizeEngine.lib
      1>"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\RealizeEngine.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:01.33
+경과 시간: 00:00:01.47

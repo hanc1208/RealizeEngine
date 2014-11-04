@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Manager">
       <UniqueIdentifier>{67f961d9-25c9-46bd-b459-30447c9da1cf}</UniqueIdentifier>
     </Filter>
@@ -22,20 +18,30 @@
     <Filter Include="EventArgument">
       <UniqueIdentifier>{6216e59e-570e-4985-9448-a3ad57565a70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Type">
+      <UniqueIdentifier>{ce0f887e-4ee0-4d40-b7e1-4499c1c44724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{1155332b-e424-42aa-880e-60176143cb34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{ccf26c46-0fe0-4252-9437-50c33c03d22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL">
+      <UniqueIdentifier>{4b0fe6c2-64ee-4a45-a10f-41ffa40a36a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constant">
+      <UniqueIdentifier>{9bf61366-2b33-438b-853f-d5138603e005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{5ba0b8fd-8a65-4983-8918-456372b19999}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Type.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Constant.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="StringManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
@@ -50,12 +56,6 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Label.h">
       <Filter>Reference</Filter>
@@ -72,23 +72,41 @@
     <ClInclude Include="RenderEventArgument.h">
       <Filter>EventArgument</Filter>
     </ClInclude>
-    <ClInclude Include="RealizeEngine.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="KeyEventArgument.h">
       <Filter>EventArgument</Filter>
     </ClInclude>
     <ClInclude Include="KeyManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Type.h">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Constant.h">
+      <Filter>Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="RealizeEngine.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Reference</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Type.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="StringManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
@@ -104,16 +122,28 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Label.cpp">
       <Filter>Reference</Filter>
     </ClCompile>
     <ClCompile Include="KeyManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Type.cpp">
+      <Filter>Type</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>

@@ -66,6 +66,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EventArgument.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="KeyEventArgument.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Label.h" />
@@ -79,13 +80,15 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Reference.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StringManager.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerManager.h" />
     <ClInclude Include="Type.h" />
     <ClInclude Include="UpdateEventArgument.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="OpenGL.cpp" />
@@ -96,6 +99,7 @@
     <ClCompile Include="Reference.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StringManager.cpp" />
+    <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="Type.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,11 @@
 #include "Node.h"
+#include "Game.h"
 
 namespace RE_NAMESPACE {
+
+	Node::Node() : _mouseDowned(false) {
+		this->setSize(Game::getInstance()->getResolution());
+	}
 
 	void Node::removeChild(const int index) {
 		assert(index < (int) _children.size());

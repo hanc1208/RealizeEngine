@@ -4,7 +4,7 @@
 
 namespace RE_NAMESPACE
 {
-	class Rect;
+	struct Rect;
 
 	struct Vector {
 		float x;

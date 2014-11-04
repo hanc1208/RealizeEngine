@@ -9,7 +9,7 @@ namespace RE_NAMESPACE {
 		_windowHandle = NULL;
 	}
 
-	Game::Game(HINSTANCE instanceHandle) {
+	Game::Game(HINSTANCE instanceHandle) : _scene(nullptr) {
 		_instance = this;
 		_instanceHandle = instanceHandle;
 		_consoleHandle = NULL;
@@ -18,7 +18,6 @@ namespace RE_NAMESPACE {
 		this->setResolution(Size(RE_DEFAULT_WIDTH, RE_DEFAULT_HEIGHT));
 		this->setSize(_resolution);
 		this->setGameScaleMode(GameScaleMode::NoScale);
-		this->setScene(nullptr);
 
 		registerWindowClass();
 		_windowHandle = createWindow();
@@ -108,9 +107,13 @@ namespace RE_NAMESPACE {
 					_queryPerformanceLast = queryPerformanceCurrent;
 
 					_framePerSecondCounter++;
-					glClearColor(0.0f, 0.5f, 1.0f, 1.0f);
+					glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 					glClear(GL_COLOR_BUFFER_BIT);
 
+					glColor3f(1.0f, 1.0f, 1.0f);
+					glRectf(0, 0, _resolution.width, _resolution.height);
+
+					TimerManager::getInstance()->onUpdate(UpdateEventArgument(nullptr, time));
 					_scene->onUpdate(UpdateEventArgument(_scene, time));
 					_scene->onRender(RenderEventArgument(_scene));
 

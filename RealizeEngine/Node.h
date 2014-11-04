@@ -14,6 +14,8 @@ using std::function;
 
 namespace RE_NAMESPACE {
 
+	class Game;
+
 	class Node : public Reference {
 		friend class Game;
 		friend class KeyManager;
@@ -73,10 +75,6 @@ namespace RE_NAMESPACE {
 		bool onMouseUp(MouseEventArgument eventArgument);
 		void onKeyDown(KeyEventArgument eventArgument);
 	};
-
-	inline Node::Node() : _mouseDowned(false) {
-
-	}
 
 	inline Node::~Node() {
 		this->removeAllChild();

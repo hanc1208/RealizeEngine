@@ -56,6 +56,8 @@ namespace RE_NAMESPACE {
 		glBindTexture(GL_TEXTURE_2D, _textureID);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, (GLsizei) _glSize.width, (GLsizei) _glSize.height, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, glImage);
 
 		glPopAttrib();
