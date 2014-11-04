@@ -4,6 +4,12 @@ namespace RE_NAMESPACE {
 
 	TimerManager TimerManager::_instance = TimerManager();
 
+	TimerManager::~TimerManager() {
+		while (_timers.size() > 0) {
+			stop(_timers[0]);
+		}
+	}
+
 	void TimerManager::start(const Timer* timer) {
 		for (auto it = _timers.begin(); it != _timers.end(); it++) {
 			if (*it == timer) {

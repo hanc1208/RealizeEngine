@@ -16,6 +16,8 @@ namespace RE_NAMESPACE {
 	public:
 		static TimerManager* getInstance();
 
+		~TimerManager();
+
 		void start(const Timer* timer);
 		void stop(const Timer* timer);
 		void onUpdate(UpdateEventArgument eventArgument);

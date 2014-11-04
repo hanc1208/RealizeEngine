@@ -1,8 +1,8 @@
-﻿빌드 시작: 2014-11-04 오후 11:29:56
+﻿빌드 시작: 2014-11-04 오후 11:37:11
      1>2 노드의 "C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\RealizeEngine.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Label.cpp
-         Label.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TimerManager.cpp
+         TimerManager.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\RealizeEngine.lib" /NOLOGO Debug\FontManager.obj
          Debug\KeyManager.obj
@@ -22,4 +22,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:01.47
+경과 시간: 00:00:00.56
