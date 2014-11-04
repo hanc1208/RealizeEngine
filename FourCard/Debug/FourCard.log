@@ -1,9 +1,6 @@
-﻿빌드 시작: 2014-11-05 오전 3:03:41
+﻿빌드 시작: 2014-11-05 오전 3:07:49
      1>2 노드의 "C:\Users\hanc1208\Desktop\RealizeEngine\FourCard\FourCard.vcxproj" 프로젝트(Build 대상)입니다.
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt LoginScene.cpp
-         LoginScene.cpp
-       Link:
+     1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\FourCard.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\FourCard.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\hanc1208\Desktop\RealizeEngine\RealizeEngine\Debug\FourCard.lib" /MACHINE:X86 Debug\LoginScene.obj
          Debug\main.obj
          Debug\SplashScene.obj
@@ -13,4 +10,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:01.64
+경과 시간: 00:00:00.50

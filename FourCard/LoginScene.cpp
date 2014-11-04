@@ -32,5 +32,5 @@ LoginScene::LoginScene() {
 	button_login->setOnClickListener([] (MouseEventArgument eventArgument) {
 		printf("·Î±×ÀÎ!!!");
 	});
-	//this->addChild(button_login);
+	this->addChild(button_login);
 }

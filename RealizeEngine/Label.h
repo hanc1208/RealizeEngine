@@ -22,6 +22,10 @@ namespace RE_NAMESPACE {
 	public:
 		Label(string text = "", string font = "");
 
+		string getText() const;
+		void setText(const string& text);
+		string getFont() const;
+		void setFont(const string& font);
 		Color getFontColor() const;
 		void setFontColor(Color fontColor);
 		TextHAlignment getTextHAlignment() const;
@@ -34,6 +38,22 @@ namespace RE_NAMESPACE {
 
 	inline Label::Label(string text, string font) : _text(text), _font(font), _fontColor(Color(0.0f, 0.0f, 0.0f)), _textHAlignment(TextHAlignment::LEFT), _textVAlignment(TextVAlignment::TOP) {
 
+	}
+
+	string Label::getText() const {
+		return _text;
+	}
+
+	void Label::setText(const string& text) {
+		_text = text;
+	}
+
+	string Label::getFont() const {
+		return _font;
+	}
+
+	void Label::setFont(const string& font) {
+		_font = font;
 	}
 
 	inline Color Label::getFontColor() const {
