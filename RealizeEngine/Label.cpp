@@ -3,6 +3,8 @@
 namespace RE_NAMESPACE {
 
 	void Label::onRender(RenderEventArgument eventArgument) {
+		Node::onRender(eventArgument);
+
 		FontManager::getInstance()->selectFont(_font);
 
 		int nLen = MultiByteToWideChar(CP_ACP, 0, &_text[0], _text.size(), NULL, NULL);
@@ -11,8 +13,6 @@ namespace RE_NAMESPACE {
 
 		glPushMatrix();
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
-
-		glColor3f(1, 0, 0);
 		
 		TEXTMETRIC textMetric;
 		GetTextMetrics(OpenGL::_hdc, &textMetric);
@@ -20,8 +20,35 @@ namespace RE_NAMESPACE {
 		if (textMetric.tmAscent > 0)
 			eventArgument.origin.y += textMetric.tmAscent;
 
+		SIZE size;
+		GetTextExtentPoint32W(OpenGL::_hdc, text.c_str(), nLen, &size);
+
+		switch (_textHAlignment) {
+		case TextHAlignment::LEFT:
+			break;
+		case TextHAlignment::CENTER:
+			eventArgument.origin.x += (this->getWidth() - size.cx) / 2;
+			break;
+		case TextHAlignment::RIGHT:
+			eventArgument.origin.x += this->getWidth() - size.cx;
+			break;
+		}
+
+		switch (_textVAlignment) {
+		case TextVAlignment::TOP:
+			break;
+		case TextVAlignment::CENTER:
+			eventArgument.origin.y += (this->getHeight() - textMetric.tmHeight) / 2;
+			break;
+		case TextVAlignment::BOTTOM:
+			eventArgument.origin.y += this->getHeight() - textMetric.tmHeight;
+			break;
+		}
+
 		glTranslatef(eventArgument.origin.x, eventArgument.origin.y, 0.0f);
 		glScalef((float) textMetric.tmHeight, (float) -textMetric.tmHeight, 0.0);
+
+		glColor4f(_fontColor.red, _fontColor.green, _fontColor.blue, _fontColor.alpha);
 
 		for (int i = 0; i < (int) text.size(); i++) {
 			int glList = glGenLists(1);

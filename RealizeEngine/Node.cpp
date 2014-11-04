@@ -3,7 +3,7 @@
 
 namespace RE_NAMESPACE {
 
-	Node::Node() : _parent(nullptr), _mouseDowned(false) {
+	Node::Node() : _parent(nullptr), _backgroundColor(Color(1.0f, 1.0f, 1.0f, 0.0f)), _mouseDowned(false) {
 		this->setSize(Game::getInstance()->getResolution());
 	}
 
@@ -56,6 +56,11 @@ namespace RE_NAMESPACE {
 	}
 
 	void Node::onRender(RenderEventArgument eventArgument) {
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
+		glColor4f(_backgroundColor.red, _backgroundColor.green, _backgroundColor.blue, _backgroundColor.alpha);
+		glRectf(eventArgument.origin.x, eventArgument.origin.y, eventArgument.origin.x + this->getWidth(), eventArgument.origin.y + this->getHeight());
+		glPopAttrib();
+
 		if (_onRenderListener) {
 			eventArgument.sender = this;
 			_onRenderListener(eventArgument);

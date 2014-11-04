@@ -17,8 +17,8 @@ namespace RE_NAMESPACE {
 	private:
 		HFONT _fontHandle;
 	public:
-		Font() : _fontHandle(nullptr) {
-
+		Font() {
+			memset(this, 0, sizeof(Font));
 		}
 
 		Font(const Font& font) {

@@ -35,6 +35,7 @@ namespace RE_NAMESPACE {
 	protected:
 		Rect _rect;
 		Vector _anchor;
+		Color _backgroundColor;
 	public:
 		Node();
 		virtual ~Node();
@@ -55,6 +56,8 @@ namespace RE_NAMESPACE {
 		void setHeight(const float height);
 		Vector getAnchor() const;
 		void setAnchor(const Vector anchor);
+		Color getBackgroundColor() const;
+		void setBackgroundColor(const Color backgroundColor);
 
 		const vector<Node*>& getChildren() const;
 		int getChildrenCount() const;
@@ -146,6 +149,14 @@ namespace RE_NAMESPACE {
 
 	inline void Node::setAnchor(const Vector anchor) {
 		_anchor = anchor;
+	}
+
+	inline Color Node::getBackgroundColor() const {
+		return _backgroundColor;
+	}
+
+	inline void Node::setBackgroundColor(const Color backgroundColor) {
+		_backgroundColor = backgroundColor;
 	}
 
 	inline const vector<Node*>& Node::getChildren() const {
